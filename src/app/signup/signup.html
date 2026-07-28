@@ -1,0 +1,50 @@
+<main class="login-page">
+  <p-toast position="top-right"></p-toast>
+  <section class="story-panel" aria-labelledby="brand-title">
+    <div class="night-sky"></div>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="theByeByeBox home"><span>the</span><b>ByeBye</b><span>Box</span></a>
+    </header>
+
+    <div class="story-content">
+      <div class="title-block">
+        <h1 id="brand-title"><span>The</span><span>Byebyebox</span></h1>
+        <i></i>
+      </div>
+      <div class="story-copy">
+        <h2>Your words deserve<br /><em>the right moment.</em></h2>
+        <p>In case I’m not around... Write messages today that will reach the people you love when the time is right.</p>
+      </div>
+      <div class="benefits">
+        <article><div class="benefit-icon"><i class="pi pi-shield"></i></div><div><h3>100% Private</h3><p>End-to-end encrypted<br />and secure.</p></div></article>
+        <article><div class="benefit-icon"><i class="pi pi-clock"></i></div><div><h3>Timely Delivery</h3><p>Delivered only when<br />the time is right.</p></div></article>
+        <article><div class="benefit-icon"><i class="pi pi-users"></i></div><div><h3>For Your Loved Ones</h3><p>Messages that stay,<br />love that lasts.</p></div></article>
+      </div>
+      <aside class="giving"><i class="pi pi-heart"></i><div><strong>50% of our revenue goes to orphanages</strong><span>Love beyond words.</span></div><i class="pi pi-angle-right arrow"></i></aside>
+    </div>
+  </section>
+
+  <section class="form-panel" aria-labelledby="login-title">
+    <nav class="top-links" aria-label="Site navigation"><a routerLink="/about">About Us</a><a href="#how-it-works">How it Works</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></nav>
+    <form class="login-form" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" novalidate>
+      <h2 id="login-title">Welcome back</h2>
+      <p class="form-intro">Continue securely to your legacy vault.</p>
+
+      <label for="email">Email address</label>
+      <div class="input-wrap" [class.invalid]="emailField.invalid && (emailField.touched || loginForm.submitted)"><i class="pi pi-envelope"></i><input id="email" name="email" type="email" [(ngModel)]="email" #emailField="ngModel" required email placeholder="Enter your email address" aria-describedby="email-error" /></div>
+      @if (emailField.invalid && (emailField.touched || loginForm.submitted)) { <small id="email-error" class="field-error">{{ emailField.errors?.['required'] ? 'Email address is required.' : 'Enter a valid email address.' }}</small> }
+      <label for="password">Password</label>
+      <div class="input-wrap" [class.invalid]="passwordField.invalid && (passwordField.touched || loginForm.submitted)"><i class="pi pi-lock"></i><input id="password" name="password" [type]="showPassword() ? 'text' : 'password'" [(ngModel)]="password" #passwordField="ngModel" required minlength="8" placeholder="Enter your password" aria-describedby="password-error" /><button type="button" (click)="togglePassword()" [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"><i [class]="showPassword() ? 'pi pi-eye-slash' : 'pi pi-eye'"></i></button></div>
+      @if (passwordField.invalid && (passwordField.touched || loginForm.submitted)) { <small id="password-error" class="field-error">{{ passwordField.errors?.['required'] ? 'Password is required.' : 'Use at least 8 characters.' }}</small> }
+      <a class="forgot" href="#forgot-password">Forgot password?</a>
+      <label class="remember"><input name="remember" type="checkbox" [(ngModel)]="rememberMe" /><span class="checkmark"><i class="pi pi-check"></i></span>Remember me</label>
+      <button class="login-button" type="submit">Login <i class="pi pi-arrow-right"></i></button>
+
+      <div class="or"><span></span>OR<span></span></div>
+      <div class="socials"><button type="button"><b class="google">G</b>Google</button><button type="button"><i class="pi pi-apple"></i>Apple</button><button type="button"><b class="facebook">f</b>Facebook</button></div>
+      <p class="signup-prompt">Don’t have an account? <a href="#signup">Sign up</a></p>
+    </form>
+  </section>
+
+  <footer><span>© 2024 theByeByeBox. All rights reserved.</span><div><a href="#privacy">Privacy Policy</a><a href="#terms">Terms of Service</a></div><button type="button"><i class="pi pi-globe"></i> English <i class="pi pi-angle-down"></i></button></footer>
+</main>
