@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-firstapp": {
+    "thebyebyebox": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -54,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-firstapp:build:production"
+              "buildTarget": "thebyebyebox:build:production"
             },
             "development": {
-              "buildTarget": "angular-firstapp:build:development"
+              "buildTarget": "thebyebyebox:build:development"
             }
           },
           "defaultConfiguration": "development"
